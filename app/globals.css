@@ -4,3 +4,4 @@
 .mo-loading-overlay svg{animation:mo-spin .8s linear infinite}
 @keyframes mo-spin{to{transform:rotate(360deg)}}
 @keyframes mo-fade{from{opacity:0}to{opacity:1}}
+.page-bg-video{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;pointer-events:none}

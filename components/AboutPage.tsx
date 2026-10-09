@@ -1,5 +1,6 @@
 import "./about.css";
 import LoadingLink from "./LoadingLink";
+import PageBgVideo from "./PageBgVideo";
 
 type Lang = "pt" | "en" | "es";
 
@@ -69,6 +70,7 @@ export default function AboutPage({ lang }: { lang: Lang }) {
   const m = M[lang];
   return (
     <div className="ab">
+      <PageBgVideo />
       <header className="ab-head">
         <a className="ab-logo" href={t.base || "/"} aria-label="MOUORA AI"><img src="/assets/brand/mouora-logo.webp" alt="MOUORA" /></a>
         <nav className="ab-nav" aria-label="Principal">

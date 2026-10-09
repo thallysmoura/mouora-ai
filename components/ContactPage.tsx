@@ -1,5 +1,6 @@
 import "./contact.css";
 import LoadingLink from "./LoadingLink";
+import PageBgVideo from "./PageBgVideo";
 
 type Lang = "pt" | "en" | "es";
 
@@ -58,6 +59,7 @@ export default function ContactPage({ lang }: { lang: Lang }) {
   const home = t.base || "/";
   return (
     <div className="ct">
+      <PageBgVideo />
       <header className="ct-head">
         <a className="ct-logo" href={home} aria-label="MOUORA AI"><img src="/assets/brand/mouora-logo.webp" alt="MOUORA" /></a>
         <nav className="ct-nav" aria-label="Principal">

@@ -1,5 +1,6 @@
 import "./how.css";
 import LoadingLink from "./LoadingLink";
+import PageBgVideo from "./PageBgVideo";
 
 type Lang = "pt" | "en" | "es";
 
@@ -56,6 +57,7 @@ export default function HowItWorks({ lang }: { lang: Lang }) {
   const contact = `${t.base}/contato`;
   return (
     <div className="hw">
+      <PageBgVideo />
       <header className="hw-head">
         <a className="hw-logo" href={home} aria-label="MOUORA AI"><img src="/assets/brand/mouora-logo.webp" alt="MOUORA" /></a>
         <nav className="hw-nav" aria-label="Principal">
@@ -115,9 +117,6 @@ export default function HowItWorks({ lang }: { lang: Lang }) {
       <footer className="hw-foot">
         <a className="hw-logo" href={home} aria-label="MOUORA AI"><img src="/assets/brand/mouora-logo.webp" alt="MOUORA" /></a>
         <nav aria-label="Rodapé">
-          <a href={t.how}>{t.foot[0]}</a>
-          <a href={about}>{t.foot[1]}</a>
-          <a href={contact}>{t.foot[2]}</a>
           <a href={t.privacy}>{t.foot[3]}</a>
           <a href={t.terms}>{t.foot[4]}</a>
         </nav>
