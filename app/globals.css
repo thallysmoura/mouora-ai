@@ -1,49 +1,6 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+.mouora-logo{display:block;height:68px;width:auto;object-fit:contain}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
+.mo-loading-overlay{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:rgba(255,250,246,.82);backdrop-filter:blur(6px);animation:mo-fade .15s ease-out}
+.mo-loading-overlay svg{animation:mo-spin .8s linear infinite}
+@keyframes mo-spin{to{transform:rotate(360deg)}}
+@keyframes mo-fade{from{opacity:0}to{opacity:1}}

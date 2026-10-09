@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" role="img" aria-labelledby="title description">
+  <title id="title">MIMIX AI</title>
+  <desc id="description">MIMIX AI M and X monogram in white and blue on a transparent background.</desc>
+  <g transform="translate(12 12)">
+    <path d="M20 22h73l73 82-40 46-74-83v116H20V22Z" fill="#F2F4F8"/>
+    <path d="M276 22h-73l-73 82 40 46 74-83v116h32V22Z" fill="#3048FF"/>
+    <path d="M20 274h73l73-82-40-46-74 83V113H20v161Z" fill="#3048FF"/>
+    <path d="M276 274h-73l-73-82 40-46 74 83V113h32v161Z" fill="#F2F4F8"/>
+  </g>
+</svg>
