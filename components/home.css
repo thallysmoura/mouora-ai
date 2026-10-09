@@ -168,3 +168,7 @@
   .mh-copy, .mh-tag { font-size: clamp(10px, 2.9vw, 13px); color: #4a4542; }
   .mh-tag { padding-left: 10px; border-left: 1px solid rgba(60, 40, 30, 0.3); }
 }
+
+/* Vídeo no lugar da foto */
+.mh-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%; pointer-events: none; }
+@media (max-width: 700px) { .mh-video { object-position: 50% 50%; } }

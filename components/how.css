@@ -82,3 +82,16 @@
   .hw-head { grid-template-columns: auto auto; justify-content: space-between; }
   .hw-nav { grid-column: 1 / -1; grid-row: 2; justify-content: flex-start; gap: 22px; }
 }
+
+/* ===== Fundo com as ondas laranja + painéis de vidro ===== */
+.hw { position: relative; isolation: isolate; background: transparent !important; }
+.hw::before { content: ""; position: fixed; inset: 0; z-index: -1; background: #fdf3ea url("/assets/login-bg.png") center / cover no-repeat; }
+.hw-hero, .hw-steps { margin-top: 22px; padding: 30px clamp(18px, 3vw, 34px); border: 1px solid rgba(255, 255, 255, 0.85); border-radius: 26px; background: rgba(255, 255, 255, 0.68); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 14px 36px rgba(120, 50, 10, 0.08); }
+.hw-hero { padding-bottom: 30px; }
+.hw-steps { padding-top: 30px; }
+.hw-perks { background: rgba(255, 255, 255, 0.68); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.85); margin-left: 0; margin-right: 0; }
+.hw-steps li { background: rgba(255, 255, 255, 0.7); }
+.hw-foot { color: #4a4036; }
+@media (max-width: 900px) {
+  .hw-hero, .hw-steps { padding: 20px 16px; border-radius: 22px; margin-top: 16px; }
+}

@@ -160,3 +160,14 @@
 
   .ct-foot { padding: calc(14 * var(--u)) calc(30 * var(--u)) calc(24 * var(--u)); }
 }
+
+/* ===== Fundo com as ondas laranja + painéis de vidro ===== */
+.ct { position: relative; isolation: isolate; background: transparent !important; }
+.ct::before { content: ""; position: fixed; inset: 0; z-index: -1; background: #fdf3ea url("/assets/login-bg.png") center / cover no-repeat; }
+.ct-talk-head { margin-top: 22px; padding: 30px 4.7%; border: 1px solid rgba(255, 255, 255, 0.85); border-radius: 26px; background: rgba(255, 255, 255, 0.68); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 14px 36px rgba(120, 50, 10, 0.08); }
+.ct-card { background: rgba(255, 255, 255, 0.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-color: rgba(255, 255, 255, 0.85); }
+.ct-foot { color: #4a4036; }
+@media (max-width: 700px) {
+  .ct-talk-head { margin-top: calc(22 * var(--u)); padding: calc(26 * var(--u)) calc(27 * var(--u)); border-radius: calc(28 * var(--u)); }
+  .ct-card { background: rgba(255, 255, 255, 0.78); }
+}

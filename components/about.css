@@ -145,3 +145,15 @@
   .ab-join-btn svg { width: calc(22 * var(--u)); height: calc(22 * var(--u)); }
   .ab-foot { padding: calc(16 * var(--u)) 20px calc(24 * var(--u)); }
 }
+
+/* ===== Fundo com as ondas laranja (mais cor, menos branco) ===== */
+.ab { position: relative; isolation: isolate; background: transparent !important; }
+.ab::before { content: ""; position: fixed; inset: 0; z-index: -1; background: #fdf3ea url("/assets/login-bg.png") center / cover no-repeat; }
+/* seções claras viram painéis de vidro sobre o fundo */
+.ab-split, .ab-pillars { margin: 22px 0; border: 1px solid rgba(255, 255, 255, 0.85); border-radius: 26px; background: rgba(255, 255, 255, 0.68); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 14px 36px rgba(120, 50, 10, 0.08); }
+.ab-pillars { padding-top: 6px; padding-bottom: 30px; }
+.ab-foot { color: #4a4036; }
+@media (max-width: 700px) {
+  .ab-split, .ab-pillars { margin: calc(20 * var(--u)) 0; border-radius: calc(28 * var(--u)); }
+  .ab-pillars { padding-bottom: calc(22 * var(--u)); }
+}

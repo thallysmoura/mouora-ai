@@ -1,5 +1,6 @@
 import "./home.css";
 import LoadingLink from "./LoadingLink";
+import HeroVideo from "./HeroVideo";
 
 type Lang = "pt" | "en" | "es";
 
@@ -30,7 +31,7 @@ export default function Home({ lang }: { lang: Lang }) {
   const t = T[lang];
   return (
     <div className="mh">
-      <div className="mh-photo" aria-hidden="true" />
+      <div className="mh-photo" aria-hidden="true"><HeroVideo variant="d" /></div>
       <div className="mh-arcs" aria-hidden="true" />
       <header className="mh-top">
         <a className="mh-brand" href={t.base || "/"} aria-label="MOUORA AI"><img src="/assets/brand/mouora-logo.webp" alt="MOUORA" /></a>
@@ -44,7 +45,7 @@ export default function Home({ lang }: { lang: Lang }) {
           {t.cta}
           <svg width="24" height="24" viewBox="0 0 24 24" {...ic} aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
         </LoadingLink>
-        <div className="mh-mphoto" aria-hidden="true" />
+        <div className="mh-mphoto" aria-hidden="true"><HeroVideo variant="m" /></div>
         <ul className="mh-feats">
           <li><span><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.2 2.5 5 13.2h5.6l-1 8.3 8.4-11h-5.7z" /></svg></span>{t.f[0]}</li>
           <li><span><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="9" cy="8" r="3.3" /><path d="M2.5 19a6.5 6.5 0 0 1 13 0Z" /><circle cx="17" cy="9" r="2.6" /><path d="M16.2 13.6A5.8 5.8 0 0 1 21.5 19H17a8 8 0 0 0-.8-5.4Z" /></svg></span>{t.f[1]}</li>
