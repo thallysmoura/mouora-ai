@@ -4,16 +4,18 @@ services:
     container_name: mouora-db
     restart: unless-stopped
     environment:
-      POSTGRES_USER: mouora
-      POSTGRES_PASSWORD: mouora_dev_pw
-      POSTGRES_DB: mouora
+      POSTGRES_USER: ${POSTGRES_USER:-mouora}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-mouora_dev_pw}
+      POSTGRES_DB: ${POSTGRES_DB:-mouora}
     ports:
-      - "127.0.0.1:5433:5432"
+      - "127.0.0.1:${POSTGRES_PORT:-5433}:5432"
     volumes:
       - mouora_pgdata:/var/lib/postgresql/data
+      # cria as tabelas na primeira subida (volume vazio)
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
     command: ["postgres", "-c", "shared_buffers=256MB", "-c", "synchronous_commit=off", "-c", "max_connections=100"]
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U mouora"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-mouora}"]
       interval: 5s
       retries: 10
 volumes:
