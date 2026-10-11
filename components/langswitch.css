@@ -1,0 +1,64 @@
+.lsw-host { display: contents; }
+.lsw { position: relative; flex: none; }
+.lsw summary { list-style: none; display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 14px; border: 1px solid #e3e0de; border-radius: 12px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(8px); cursor: pointer; font-size: 14px; line-height: 1; color: #1b1e33; user-select: none; }
+.lsw summary::-webkit-details-marker { display: none; }
+.lsw summary b { font-weight: 700; }
+.lsw-chev { transition: transform .15s; opacity: .7; }
+.lsw[open] .lsw-chev { transform: rotate(180deg); }
+.lsw-panel { position: absolute; right: 0; top: calc(100% + 8px); z-index: 60; min-width: 230px; padding: 10px; display: grid; gap: 4px; border: 1px solid #e6e2df; border-radius: 16px; background: #fff; box-shadow: 0 18px 40px rgba(20, 24, 50, 0.18); }
+.lsw-label { padding: 4px 12px 8px; font-size: 13px; font-weight: 600; color: #5d6784; }
+.lsw-item { display: flex; align-items: center; gap: 14px; padding: 12px; border-radius: 10px; font-size: 16px; font-weight: 500; color: #1b2a4a !important; text-decoration: none; }
+.lsw-item:hover { background: #f3f6fc; }
+.lsw-item.is-active { background: #e8f0fe; color: #1a4fd0 !important; }
+.lsw-item span { flex: 1; }
+.lsw-item svg:first-child { flex: none; }
+.lsw-check { flex: none; color: #1a4fd0; }
+.hw-tools, .ab-tools { display: flex; align-items: center; gap: 12px; justify-self: end; margin-left: auto; }
+@media (max-width: 480px) { .lsw summary { height: 36px; padding: 0 10px; gap: 6px; } .lsw-panel { min-width: 210px; } }
+.mo-langpos { position: absolute; top: 22px; right: clamp(16px, 4vw, 56px); z-index: 30; }
+/* menu do usuário no cabeçalho do painel */
+.um { position: relative; flex: none; }
+.um summary { list-style: none; display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 10px 0 6px; border-radius: 999px; cursor: pointer; color: inherit; font-size: 14px; font-weight: 600; user-select: none; transition: background .15s; }
+.um summary::-webkit-details-marker { display: none; }
+.um summary:hover, .um[open] summary { background: rgba(127, 127, 127, 0.16); }
+.um-avatar { flex: none; width: 32px; height: 32px; border-radius: 50%; object-fit: cover; display: block; }
+.um-initials { display: grid; place-items: center; background: linear-gradient(135deg, #ff7a3d, #ef481f); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: .02em; }
+.um-name { max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.um-chev { opacity: .7; transition: transform .15s; }
+.um[open] .um-chev { transform: rotate(180deg); }
+.um-panel { position: absolute; right: 0; top: calc(100% + 8px); z-index: 80; width: 260px; padding: 8px; display: grid; gap: 2px; border: 1px solid #e6e2df; border-radius: 16px; background: #fff; color: #1b1e33; box-shadow: 0 18px 40px rgba(20, 24, 50, 0.22); text-align: left; }
+.um-who { display: flex; align-items: center; gap: 12px; padding: 10px 10px 12px; margin-bottom: 4px; border-bottom: 1px solid #f0ebe8; }
+.um-who .um-avatar { width: 40px; height: 40px; font-size: 14px; }
+.um-who div { min-width: 0; display: grid; }
+.um-who strong { font-size: 14px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.um-who span { font-size: 12.5px; color: #6b7186; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.um-item { display: flex; align-items: center; gap: 12px; width: 100%; padding: 11px 10px; border: 0; border-radius: 10px; background: none; font: inherit; font-size: 14.5px; font-weight: 500; color: #1b1e33; text-decoration: none; cursor: pointer; text-align: left; }
+.um-item:hover { background: #f3f6fc; }
+.um-out { color: #c4321a; }
+.um-out:hover { background: #fff1ee; }
+@media (max-width: 640px) { .um-name { display: none; } .um summary { padding: 0 6px; gap: 6px; } }
+/* o CSS do painel força cores em links/botões/spans do cabeçalho; aqui garantimos contraste em todos os estados */
+.um-panel, .um-panel * { text-shadow: none; }
+.um-panel .um-item, .um-panel .um-item:hover, .um-panel .um-item:focus, .um-panel .um-item:focus-visible, .um-panel .um-item:active, .um-panel a.um-item:visited { color: #1b1e33 !important; opacity: 1 !important; }
+.um-panel .um-item:hover, .um-panel .um-item:focus-visible { background: #eef2fb !important; }
+.um-panel .um-out, .um-panel .um-out:hover, .um-panel .um-out:focus-visible { color: #c4321a !important; }
+.um-panel .um-out:hover, .um-panel .um-out:focus-visible { background: #fff1ee !important; }
+.um-panel .um-item svg { color: inherit; stroke: currentColor; }
+.um-panel .um-who strong { color: #1b1e33 !important; }
+.um-panel .um-who span:not(.um-avatar) { color: #6b7186 !important; }
+.um .um-initials, .um-panel .um-initials { color: #fff !important; }
+.um summary, .um summary:hover, .um[open] summary, .um summary .um-name { color: inherit; }
+
+/* o seletor de idioma abre por cima de todo o conteúdo da página: os cabeçalhos criam contextos de empilhamento próprios */
+.mh-top, .ab-head, .hw-head, .ct-head, .lg-head { position: relative; z-index: 500; }
+.mo-langpos { z-index: 500; }
+.lsw-panel { z-index: 1000; }
+.dsh-top { position: relative; z-index: 300; }
+.dsh-pop { z-index: 1000; }
+
+/* Garantia final: cada CSS de página define o z-index do próprio cabeçalho (ex.: home.css → 2) e vencia o ajuste acima pela ordem de carregamento. */
+.mh-top, .ab-head, .hw-head, .ct-head, .lg-head, .mo-langpos, .dsh-top { position: relative !important; z-index: 9000 !important; }
+.mo-login--m > .mo-langpos { position: absolute !important; }
+.lsw { z-index: 9001; }
+.lsw-panel { z-index: 9002 !important; }
+.dsh-pop { z-index: 9002 !important; }

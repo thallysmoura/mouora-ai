@@ -22,7 +22,19 @@ CREATE TABLE IF NOT EXISTS users (
   reset_token_hash     TEXT,
   reset_token_expires  TIMESTAMPTZ,
 
-  last_code_sent_at    TIMESTAMPTZ
+  last_code_sent_at    TIMESTAMPTZ,
+
+  -- perfil (configurações do painel)
+  phone                   TEXT,
+  locale                  TEXT,
+  avatar_url              TEXT,  -- foto de perfil (Cloudinary)
+  email_changed_at        TIMESTAMPTZ,  -- última troca de e-mail (só 1 por semana)
+  avatar_public_id        TEXT,  -- mouora/<hash único>, usado para apagar a foto antiga
+  -- troca de e-mail: novo endereço aguardando confirmação por código (hash)
+  pending_email           TEXT,
+  pending_email_hash      TEXT,
+  pending_email_expires   TIMESTAMPTZ,
+  pending_email_attempts  INT NOT NULL DEFAULT 0
 );
 
 -- e-mail único sem diferenciar maiúsculas/minúsculas
@@ -33,3 +45,37 @@ CREATE TABLE IF NOT EXISTS mail_throttle (
   key     TEXT PRIMARY KEY,
   sent_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
+-- contadores de limite de tentativas (login, cadastro, códigos)
+CREATE TABLE IF NOT EXISTS rate_limit (
+  key          TEXT PRIMARY KEY,
+  count        INT         NOT NULL,
+  window_start TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+-- controle de acesso (perfil e situação do usuário)
+ALTER TABLE users ADD COLUMN IF NOT EXISTS role   TEXT NOT NULL DEFAULT 'user';    -- 'admin' | 'user'
+ALTER TABLE users ADD COLUMN IF NOT EXISTS status TEXT NOT NULL DEFAULT 'pending';  -- 'pending' (aguardando liberação) | 'active' | 'suspended'
+ALTER TABLE users ALTER COLUMN status SET DEFAULT 'pending';
+
+-- log de acessos (login, falhas, cadastro...) com IP, dispositivo e localização aproximada
+CREATE TABLE IF NOT EXISTS access_log (
+  id            BIGSERIAL PRIMARY KEY,
+  user_id       BIGINT,
+  email         TEXT,
+  event         TEXT NOT NULL,
+  ip            TEXT,
+  user_agent    TEXT,
+  device_type   TEXT,
+  browser       TEXT,
+  os            TEXT,
+  device_model  TEXT,
+  country       TEXT,
+  region        TEXT,
+  city          TEXT,
+  lat           DOUBLE PRECISION,
+  lon           DOUBLE PRECISION,
+  created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS access_log_created_idx ON access_log (created_at DESC);
+CREATE INDEX IF NOT EXISTS access_log_email_idx ON access_log (lower(email));

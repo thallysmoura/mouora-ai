@@ -1,3 +1,5 @@
+import SiteFooter from "./SiteFooter";
+import LangSwitch from "./LangSwitch";
 import "./contact.css";
 import LoadingLink from "./LoadingLink";
 import PageBgVideo from "./PageBgVideo";
@@ -68,11 +70,7 @@ export default function ContactPage({ lang }: { lang: Lang }) {
           <a className="is-active" href={t.contact}>{t.nav[2]}</a>
         </nav>
         <div className="ct-tools">
-          <span className="ct-lang">
-            <svg width="22" height="16" viewBox="0 0 28 20" aria-hidden="true" style={{ borderRadius: 3 }}><path fill="#009b3a" d="M0 0h28v20H0z" /><path fill="#ffdf00" d="m14 2 12 8-12 8L2 10z" /><circle cx="14" cy="10" r="4.4" fill="#002776" /></svg>
-            {t.lang}
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
-          </span>
+          <LangSwitch lang={lang} slug="/contato" />
           <details className="ct-menu">
             <summary aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg></summary>
             <div className="ct-menu-panel">
@@ -140,16 +138,7 @@ export default function ContactPage({ lang }: { lang: Lang }) {
         </section>
       </main>
 
-      <footer className="ct-foot">
-        <a className="ct-logo" href={home} aria-label="MOUORA AI"><img src="/assets/brand/mouora-logo.webp" alt="MOUORA" /></a>
-        <span>© 2026 MOUORA AI. {t.rights}</span>
-        <nav aria-label="Rodapé">
-          <a href={t.how}>{t.foot[0]}</a>
-          <a href={t.about}>{t.foot[1]}</a>
-          <a href={t.contact}>{t.foot[2]}</a>
-          <a href={t.privacy}>{t.foot[3]}</a>
-        </nav>
-      </footer>
+      <SiteFooter lang={lang} />
     </div>
   );
 }

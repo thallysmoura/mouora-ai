@@ -1,0 +1,92 @@
+.ps { display: grid; gap: 18px; max-width: 880px; padding: 4px 0 40px; font-family: Inter, "Segoe UI", system-ui, sans-serif; color: #14110f; }
+.ps *, .ps *::before, .ps *::after { box-sizing: border-box; }
+.ps-card { padding: 26px 28px; border-radius: 20px; background: rgba(255, 255, 255, 0.82); border: 1px solid rgba(60, 40, 30, 0.1); backdrop-filter: blur(10px); box-shadow: 0 8px 28px rgba(60, 30, 10, 0.05); }
+.ps-card h3 { margin: 0 0 4px; font-size: 18px; font-weight: 700; letter-spacing: -.01em; }
+.ps-sub { margin: 0 0 20px; font-size: 14px; line-height: 1.55; color: #6b7186; }
+.ps-sub strong { color: #2a2e40; font-weight: 600; }
+.ps-head { display: flex; align-items: center; gap: 18px; }
+.ps-head h2 { margin: 0; font-size: 20px; font-weight: 700; }
+.ps-head p { margin: 2px 0 0; font-size: 14px; color: #6b7186; }
+.ps-avatar { flex: none; object-fit: cover; width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, #ff7a3d, #ef481f); color: #fff; font-size: 22px; font-weight: 700; letter-spacing: .02em; }
+.ps-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+.ps-field { margin-bottom: 18px; min-width: 0; }
+.ps-field label { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 600; color: #2a2e40; }
+.ps-input { position: relative; display: flex; align-items: center; height: 48px; padding: 0 14px; border: 1.5px solid #e2dedb; border-radius: 12px; background: #fff; transition: border-color .15s, box-shadow .15s; }
+.ps-input:focus-within { border-color: #ef481f; box-shadow: 0 0 0 3px rgba(239, 72, 31, 0.12); }
+.ps-input.bad { border-color: #d9482b; background: #fff8f6; }
+.ps-input input, .ps-input select { flex: 1; min-width: 0; height: 100%; border: 0; outline: 0; background: transparent; font: inherit; font-size: 15px; color: #14110f; padding: 0; }
+.ps-input select { cursor: pointer; }
+.ps-code input { letter-spacing: .5em; font-size: 20px; font-weight: 600; max-width: 220px; }
+.ps-eye { flex: none; display: grid; place-items: center; width: 32px; height: 32px; margin-right: -6px; border: 0; background: none; color: #6b7186; cursor: pointer; border-radius: 8px; }
+.ps-eye:hover { color: #ef481f; }
+.ps-err { margin: 6px 2px 0; font-size: 13px; color: #c4321a; }
+.ps-hint { margin: 6px 2px 0; font-size: 12.5px; color: #8a8480; }
+.ps-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+.ps-btn { height: 44px; padding: 0 22px; border: 0; border-radius: 12px; background: #ef481f; color: #fff; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; transition: background .15s, opacity .15s; }
+.ps-btn:hover:not(:disabled) { background: #d93d16; }
+.ps-btn:disabled { opacity: .5; cursor: default; }
+.ps-btn.ghost { background: #fff; color: #ef481f; border: 1.5px solid #ef481f; }
+.ps-btn.ghost:hover:not(:disabled) { background: #fff3ec; }
+.ps-note { margin: 0; font-size: 14px; font-weight: 500; }
+.ps-note.ok { color: #12803f; } .ps-note.bad { color: #c4321a; }
+.ps-rules-wrap { display: grid; grid-template-rows: 0fr; opacity: 0; margin: -6px 0 0; transition: grid-template-rows .25s ease, opacity .2s ease, margin .25s ease; }
+.ps-rules-wrap[data-open="true"] { grid-template-rows: 1fr; opacity: 1; margin: -4px 0 16px; }
+.ps-rules-inner { overflow: hidden; min-height: 0; }
+.ps-rules { list-style: none; margin: 0; padding: 10px 14px; display: grid; gap: 3px; border-radius: 12px; background: #faf8f6; border: 1px solid #eee9e5; font-size: 12.5px; font-weight: 500; }
+.ps-rules li { display: flex; align-items: center; gap: 7px; }
+.ps-rules li > span { display: inline-grid; place-items: center; width: 14px; height: 14px; border-radius: 50%; font-size: 8.5px; font-weight: 800; color: #fff; flex: none; }
+.ps-rules li.no { color: #c4321a; } .ps-rules li.no > span { background: #d9482b; }
+.ps-rules li.ok { color: #12803f; } .ps-rules li.ok > span { background: #16a34a; }
+@media (max-width: 700px) {
+  .ps-card { padding: 20px 18px; border-radius: 16px; }
+  .ps-row { grid-template-columns: 1fr; }
+  .ps-btn { flex: 1 1 auto; }
+}
+
+.ps-avatar-btn { position: relative; flex: none; width: 72px; height: 72px; padding: 0; border: 0; border-radius: 50%; background: none; cursor: pointer; }
+.ps-avatar-btn:disabled { cursor: default; }
+.ps-avatar-btn .ps-avatar { width: 72px; height: 72px; display: grid; place-items: center; font-size: 24px; }
+.ps-avatar-btn:focus-visible { outline: 3px solid rgba(239, 72, 31, 0.4); outline-offset: 3px; }
+.ps-cam { position: absolute; right: -2px; bottom: -2px; width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: #fff; color: #ef481f; border: 1.5px solid #f0ddd5; box-shadow: 0 2px 8px rgba(60, 30, 10, 0.18); transition: transform .15s, background .15s; }
+.ps-avatar-btn:hover .ps-cam { transform: scale(1.08); background: #fff3ec; }
+.ps-spin { position: absolute; inset: 0; border-radius: 50%; background: rgba(255, 255, 255, 0.72); display: grid; place-items: center; }
+.ps-spin::after { content: ""; width: 26px; height: 26px; border-radius: 50%; border: 3px solid rgba(239, 72, 31, 0.25); border-top-color: #ef481f; animation: ps-rot .7s linear infinite; }
+@keyframes ps-rot { to { transform: rotate(360deg); } }
+.ps-who { min-width: 0; }
+.ps-who h2 { overflow-wrap: anywhere; }
+.ps-photo-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 14px; margin-top: 8px; }
+.ps-link { padding: 0; border: 0; background: none; font: inherit; font-size: 13.5px; font-weight: 600; color: #ef481f; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.ps-link.danger { color: #c4321a; }
+.ps-link:disabled { opacity: .5; cursor: default; }
+.ps-photo-hint { font-size: 12.5px; color: #8a8480; }
+.ps-who .ps-note { margin-top: 6px; font-size: 13.5px; }
+@media (max-width: 520px) { .ps-head { align-items: flex-start; } }
+/* campos: nada pode vazar para cima da borda (o CSS global do painel estiliza <input>) */
+.ps .ps-input { overflow: hidden; }
+.ps .ps-input input, .ps .ps-input select { box-sizing: border-box; height: 100%; max-height: 100%; margin: 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; outline: 0; }
+/* preenchimento automático do navegador (e-mail/senha salvos): o azul nunca chega a ser pintado e o texto segue escuro */
+.ps .ps-input input:-webkit-autofill,
+.ps .ps-input input:-webkit-autofill:hover,
+.ps .ps-input input:-webkit-autofill:focus,
+.ps .ps-input input:-webkit-autofill:active { -webkit-text-fill-color: #14110f; caret-color: #14110f; transition: background-color 600000s 0s, color 600000s 0s; }
+
+.ps-lock { display: flex; align-items: flex-start; gap: 10px; margin: 0; padding: 12px 14px; border-radius: 12px; background: #fff7ed; border: 1px solid #fde1c8; font-size: 13.5px; line-height: 1.5; color: #8a4b14; }
+.ps-lock svg { flex: none; margin-top: 2px; }
+
+.ps-btn-ico { display: inline-flex; align-items: center; gap: 8px; }
+.ps-btn-spin { width: 16px; height: 16px; border-radius: 50%; border: 2.5px solid rgba(255, 255, 255, 0.4); border-top-color: #fff; animation: ps-rot .7s linear infinite; }
+
+/* botões: o CSS global do painel zera cor/fundo de <button>; aqui o estilo é garantido */
+.ps .ps-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 46px; padding: 0 24px; border: 0 !important; border-radius: 12px; background: #ef481f !important; color: #fff !important; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; transition: background .15s, box-shadow .15s, transform .1s; box-shadow: 0 4px 12px rgba(239, 72, 31, 0.25); }
+.ps .ps-btn:hover:not(:disabled) { background: #d93d16 !important; }
+.ps .ps-btn:active:not(:disabled) { transform: translateY(1px); }
+.ps .ps-btn:focus-visible { outline: 3px solid rgba(239, 72, 31, 0.35); outline-offset: 2px; }
+.ps .ps-btn:disabled { opacity: .6; cursor: default; box-shadow: none; }
+.ps .ps-btn.ghost { background: #fff !important; color: #ef481f !important; border: 1.5px solid #ef481f !important; box-shadow: none; }
+.ps .ps-btn.ghost:hover:not(:disabled) { background: #fff3ec !important; }
+.ps .ps-btn.ps-save { background: #16a34a !important; box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3); animation: ps-pop .18s ease-out; }
+.ps .ps-btn.ps-save:hover:not(:disabled) { background: #12803f !important; }
+.ps .ps-btn.ps-save:focus-visible { outline-color: rgba(22, 163, 74, 0.4); }
+@keyframes ps-pop { from { opacity: 0; transform: translateY(4px) scale(.98); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 900px) { .ps-input input, .ps-input select { font-size: 16px; } }

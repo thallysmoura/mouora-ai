@@ -1,0 +1,30 @@
+.sf-host { display: contents; }
+.sf { position: relative; z-index: 2; width: 100%; background: rgba(255, 255, 255, 0.96); border-top: 1px solid rgba(40, 30, 25, 0.08); font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif; color: #4b5063; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+.sf *, .sf *::before, .sf *::after { box-sizing: border-box; }
+.sf-in { max-width: 1180px; margin: 0 auto; padding: 36px clamp(20px, 5vw, 48px) 22px; }
+.sf-top { display: flex; align-items: center; justify-content: space-between; gap: 24px 48px; flex-wrap: wrap; padding-bottom: 26px; }
+.sf-brand { display: flex; align-items: center; gap: 20px; min-width: 0; }
+.sf-logo { display: block; flex: none; line-height: 0; }
+.sf-logo img { display: block; height: 38px; width: auto; }
+.sf-tag { margin: 0; padding-left: 20px; border-left: 1px solid rgba(40, 30, 25, 0.16); font-size: 14px; line-height: 1.45; color: #6b7186; }
+.sf-nav, .sf-legal { display: flex; align-items: center; flex-wrap: wrap; }
+.sf-nav { gap: 8px 34px; }
+.sf-nav a { font-size: 15px; font-weight: 500; color: #2a2e40; }
+.sf-legal { gap: 6px 24px; }
+.sf-legal a { font-size: 13px; color: #7c8190; }
+.sf a { text-decoration: none; transition: color .15s; }
+.sf-nav a:hover, .sf-legal a:hover, .sf a:focus-visible { color: #ef481f; }
+.sf-nav a:hover, .sf-legal a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.sf-bottom { display: flex; align-items: center; justify-content: space-between; gap: 10px 24px; flex-wrap: wrap; padding-top: 18px; border-top: 1px solid rgba(40, 30, 25, 0.08); }
+.sf-copy { margin: 0; font-size: 13px; color: #7c8190; }
+@media (max-width: 760px) {
+  .sf-in { padding: 28px 20px 20px; }
+  .sf-top { flex-direction: column; align-items: center; gap: 20px; padding-bottom: 22px; text-align: center; }
+  .sf-brand { flex-direction: column; gap: 10px; }
+  .sf-tag { padding-left: 0; border-left: 0; font-size: 13.5px; }
+  .sf-nav { justify-content: center; gap: 10px 26px; }
+  .sf-nav a { font-size: 14.5px; }
+  .sf-bottom { flex-direction: column; justify-content: center; gap: 10px; text-align: center; padding-top: 16px; }
+  .sf-legal { justify-content: center; gap: 6px 20px; }
+  .sf-copy { order: 2; font-size: 12.5px; }
+}

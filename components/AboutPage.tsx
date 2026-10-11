@@ -1,3 +1,5 @@
+import SiteFooter from "./SiteFooter";
+import LangSwitch from "./LangSwitch";
 import "./about.css";
 import LoadingLink from "./LoadingLink";
 import PageBgVideo from "./PageBgVideo";
@@ -78,7 +80,13 @@ export default function AboutPage({ lang }: { lang: Lang }) {
           <a className="is-active" href={t.about}>{t.nav[1]}</a>
           <a href={t.contact}>{t.nav[2]}</a>
         </nav>
-        <span className="ab-lang">{lang.toUpperCase()}<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></span>
+        <div className="ab-tools">
+          <LangSwitch lang={lang} slug="/sobre" />
+          <LoadingLink className="ab-login" href={`/login?lang=${lang}`}>
+            {t.login}
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+          </LoadingLink>
+        </div>
         <details className="ab-menu">
           <summary aria-label="Menu"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg></summary>
           <div className="ab-menu-panel">
@@ -88,10 +96,6 @@ export default function AboutPage({ lang }: { lang: Lang }) {
             <a className="is-login" href={`/login?lang=${lang}`}>{t.login}</a>
           </div>
         </details>
-        <LoadingLink className="ab-login" href={`/login?lang=${lang}`}>
-          {t.login}
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
-        </LoadingLink>
       </header>
 
       <main>
@@ -159,11 +163,7 @@ export default function AboutPage({ lang }: { lang: Lang }) {
         </section>
       </main>
 
-      <footer className="ab-foot">
-        <span>© 2026 MOUORA AI</span>
-        <a href={t.terms}>{t.fT}</a>
-        <a href={t.privacy}>{t.fP}</a>
-      </footer>
+      <SiteFooter lang={lang} />
     </div>
   );
 }

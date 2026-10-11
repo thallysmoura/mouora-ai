@@ -1,5 +1,8 @@
 import type { ReactNode } from "react";
 import "./globals.css";
+import "@/components/langswitch.css";
+import "@/components/sitefooter.css";
+import LangOutside from "@/components/LangOutside";
 
 export const metadata = {
   title: "Mouora AI",
@@ -16,6 +19,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body>
         <div id="root">{children}</div>
+        <LangOutside />
       </body>
     </html>
   );

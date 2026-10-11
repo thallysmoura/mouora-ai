@@ -1,3 +1,5 @@
+import SiteFooter from "./SiteFooter";
+import LangSwitch from "./LangSwitch";
 import "./home.css";
 import LoadingLink from "./LoadingLink";
 import HeroVideo from "./HeroVideo";
@@ -35,7 +37,10 @@ export default function Home({ lang }: { lang: Lang }) {
       <div className="mh-arcs" aria-hidden="true" />
       <header className="mh-top">
         <a className="mh-brand" href={t.base || "/"} aria-label="MOUORA AI"><img src="/assets/brand/mouora-logo.webp" alt="MOUORA" /></a>
-        <LoadingLink className="mh-login" href={`/login?lang=${lang}`}>{t.login}</LoadingLink>
+        <div className="mh-actions">
+          <LangSwitch lang={lang} />
+          <LoadingLink className="mh-login" href={`/login?lang=${lang}`}>{t.login}</LoadingLink>
+        </div>
       </header>
       <main className="mh-hero">
         <p className="mh-eyebrow">{t.eyebrow}</p>
@@ -52,13 +57,7 @@ export default function Home({ lang }: { lang: Lang }) {
           <li><span><svg width="26" height="26" viewBox="0 0 24 24" {...ic} aria-hidden="true"><circle cx="12" cy="12" r="8.5" /><path d="M12 7.5V12l3 2" /></svg></span>{t.f[2]}</li>
         </ul>
       </main>
-      <footer className="mh-foot">
-        <span className="mh-copy">© 2026 MOUORA AI</span>
-        <span className="mh-tag">{t.tag}</span>
-        <nav className="mh-links" aria-label="Links">
-          {t.links.map(([label, href]) => (<a key={href} href={href}>{label}</a>))}
-        </nav>
-      </footer>
+      <SiteFooter lang={lang} />
     </div>
   );
 }

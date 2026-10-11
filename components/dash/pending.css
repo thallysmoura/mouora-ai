@@ -1,0 +1,16 @@
+.pa { min-height: 100vh; display: grid; place-items: center; padding: 24px; background: radial-gradient(60% 40% at 100% 0%, rgba(255, 190, 160, 0.3), transparent 70%), radial-gradient(50% 40% at 0% 100%, rgba(255, 200, 175, 0.25), transparent 70%), #fbf4f1; font-family: var(--mx-font-body, "Inter Variable", Inter, system-ui, sans-serif); color: #1d1411; }
+.pa *, .pa *::before, .pa *::after { box-sizing: border-box; }
+.pa-card { width: min(520px, 100%); padding: 40px 36px 36px; border-radius: 26px; background: rgba(255, 253, 252, 0.95); border: 1px solid #f0e6e1; box-shadow: 0 20px 60px rgba(120, 60, 30, 0.1); text-align: center; }
+.pa-logo { display: block; margin: 0 auto 24px; height: 48px; width: auto; }
+.pa-ico { display: inline-grid; place-items: center; width: 84px; height: 84px; margin-bottom: 18px; border-radius: 26px; background: #fff0ea; color: #ef481f; }
+.pa-card h1 { margin: 0 0 12px; font-family: var(--mx-font-display, "Manrope Variable", sans-serif); font-size: clamp(24px, 4.4vw, 30px); line-height: 1.2; font-weight: 800; letter-spacing: -0.02em; }
+.pa-lead { margin: 0 0 8px; font-size: 16px; line-height: 1.55; color: #3a2a24; }
+.pa-text { margin: 0 0 26px; font-size: 15px; line-height: 1.6; color: #6b625d; }
+.pa-text strong { color: #3a2a24; overflow-wrap: anywhere; }
+.pa-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.pa .pa-btn { height: 46px; padding: 0 24px; border: 0 !important; border-radius: 12px; background: #ef481f !important; color: #fff !important; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 12px rgba(239, 72, 31, 0.25); transition: background .15s; }
+.pa .pa-btn:hover:not(:disabled) { background: #d93d16 !important; }
+.pa .pa-btn.ghost { background: #fff !important; color: #3a2a24 !important; border: 1.5px solid #e8dfda !important; box-shadow: none; }
+.pa .pa-btn.ghost:hover:not(:disabled) { background: #faf6f3 !important; }
+.pa .pa-btn:disabled { opacity: .6; cursor: default; }
+@media (max-width: 480px) { .pa-card { padding: 30px 20px 26px; } .pa .pa-btn { flex: 1 1 100%; } }

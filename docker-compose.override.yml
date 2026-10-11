@@ -1,0 +1,13 @@
+# Aplicado automaticamente em desenvolvimento (`docker compose up`). Em produção use `-f docker-compose.yml`.
+# Expõe o banco só no loopback (127.0.0.1) para o `npm run dev`, e o app em 127.0.0.1:${APP_PORT}.
+services:
+  db:
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5433}:5432"
+    networks: [backend, dev]
+  app:
+    ports:
+      - "127.0.0.1:${APP_PORT:-3100}:3000"
+
+networks:
+  dev: {}

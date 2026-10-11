@@ -191,7 +191,7 @@
   .mo-login--m .mo-field label { margin: 0 0 calc(13 * var(--u)); font-size: calc(24 * var(--u)); line-height: calc(30 * var(--u)); font-weight: 500; color: #12151f; }
   .mo-login--m .mo-input { height: calc(80 * var(--u)); padding: 0 calc(48 * var(--u)) 0 calc(32 * var(--u)); gap: calc(31 * var(--u)); border: calc(2 * var(--u)) solid #dedfe9; border-radius: calc(12 * var(--u)); background: #fdfdff; }
   .mo-login--m .mo-input svg { width: calc(34 * var(--u)); height: calc(34 * var(--u)); flex: none; color: #5b606c; }
-  .mo-login--m .mo-input input { font-size: calc(25 * var(--u)); }
+  .mo-login--m .mo-input input { font-size: max(16px, calc(25 * var(--u))); } /* < 16px faz o iOS dar zoom ao focar */
   .mo-login--m .mo-input input::placeholder { color: #9aa0ad; }
   .mo-login--m .mo-eye { padding: 0; margin-right: calc(-20 * var(--u)); }
   .mo-login--m .mo-submit { height: calc(90 * var(--u)); margin-top: 0; border-radius: calc(16 * var(--u)) !important; font-size: calc(32 * var(--u)); font-weight: 500; background: linear-gradient(90deg, #f9532f 0%, #fb7a33 55%, #fb9a3b 100%); box-shadow: 0 calc(18 * var(--u)) calc(34 * var(--u)) rgba(244, 100, 40, 0.28); }
@@ -229,6 +229,31 @@
 .mo-msg { margin: 14px 0 0; font-size: 14.5px; line-height: 1.5; color: #b3341a; text-align: center; }
 .mo-note { margin: 0 0 18px; font-size: 15px; line-height: 1.55; color: #4d5360; }
 .mo-linkbtn { display: block; width: max-content; margin: 18px auto 0; padding: 4px 6px; border: 0; background: none; font: inherit; font-size: 15.5px; font-weight: 600; color: var(--o); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.mo-resend-wait { margin: 18px 0 0; text-align: center; font-size: 15.5px; font-weight: 600; color: #9aa0ad; }
+.mo-resend { display: grid; justify-items: center; gap: 8px; margin-top: 18px; font-size: 14.5px; color: #6b7280; }
+.mo-resend-btn { padding: 11px 26px; border: 1.5px solid var(--o); border-radius: 12px; background: #fff; font: inherit; font-size: 15.5px; font-weight: 700; color: var(--o); cursor: pointer; }
+.mo-resend-btn:hover:not(:disabled) { background: #fff3ec; }
+.mo-resend-btn:disabled { opacity: .6; cursor: default; }
+.mo-err { margin: 8px 2px 0; font-size: 13.5px; line-height: 1.4; color: #c4321a; }
+.mo-input.is-invalid { border-color: #d9482b; background: #fff8f6; }
+.mo-input.is-invalid:focus-within { border-color: #d9482b; }
+.mo-rules-wrap { display: grid; grid-template-rows: 0fr; margin-top: 0; opacity: 0; transition: grid-template-rows .25s ease, opacity .2s ease, margin .25s ease; }
+.mo-rules-wrap[data-open="true"] { grid-template-rows: 1fr; opacity: 1; margin: -10px 0 20px; }
+.mo-rules-inner { overflow: hidden; min-height: 0; }
+.mo-rules { padding: 10px 14px 9px; border-radius: 12px; background: #faf8f6; border: 1px solid #eee9e5; font-size: 12px; font-weight: 500; --c: #d9482b; }
+.mo-rules.lvl-mid { --c: #e08a00; } .mo-rules.lvl-good { --c: #84a800; } .mo-rules.lvl-strong { --c: #16a34a; }
+.mo-rules-head { display: grid; gap: 5px; margin-bottom: 7px; }
+.mo-rules-head b { font-size: 12.5px; font-weight: 700; color: var(--c); text-align: left; }
+.mo-bar { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
+.mo-bar i { height: 4px; border-radius: 4px; background: #e6e1dd; transition: background .2s; }
+.mo-bar i.on { background: var(--c); }
+.mo-rules ul { list-style: none; display: grid; grid-template-columns: 1fr; gap: 3px; margin: 0; padding: 0; }
+.mo-rules li { display: flex; align-items: center; gap: 7px; line-height: 1.2; color: #8a8480; transition: color .15s; }
+.mo-rules li > span[aria-hidden] { display: inline-grid; place-items: center; width: 14px; height: 14px; border-radius: 50%; font-size: 8.5px; font-weight: 800; color: #fff; flex: none; background: #d6d0cb; transition: background .15s; }
+.mo-rules li.no { color: #c4321a; } .mo-rules li.no > span[aria-hidden] { background: #d9482b; }
+.mo-rules li.ok { color: #12803f; } .mo-rules li.ok > span[aria-hidden] { background: #16a34a; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.mo-checkwrap { margin-bottom: 4px; }
 .mo-linkbtn:disabled { color: #9aa0ad; text-decoration: none; cursor: default; }
 .mo-otp input { letter-spacing: 0.45em; font-size: 20px; font-weight: 600; }
 @media (max-width: 700px) {
@@ -256,3 +281,16 @@
   .mo-otp-boxes input { width: 42px; height: 52px; font-size: 21px; }
 }
 .mo-modal .mo-msg { color: #5d6377; font-size: 13.5px; }
+
+/* mobile: o seletor de idioma fica no canto direito (o ".mo-login--m > *" acima o deixava no fluxo, à esquerda) */
+@media (max-width: 700px) { .mo-login--m > .mo-langpos { position: absolute; z-index: 500; top: calc(52 * var(--u)); right: calc(40 * var(--u)); left: auto; margin: 0; } }
+/* nenhum campo abaixo de 16px no celular (evita o zoom automático do iOS) */
+@media (max-width: 900px) { .mo-login input, .mo-login select, .mo-login textarea { font-size: max(16px, 1em); } }
+
+/* ícone ao lado do título do campo (em vez de dentro do input) */
+.mo-field label { display: flex; align-items: center; gap: 9px; }
+.mo-label-ico { flex: none; width: 1.15em; height: 1.15em; color: #5f5a57; }
+.mo-input { gap: 0; }
+.mo-input:has(input) { padding-left: 20px; }
+@media (max-width: 700px) { .mo-input:has(input) { padding-left: 14px; } .mo-login--m .mo-field label { gap: calc(14 * var(--u)); } }
+.mo-input .mo-eye { margin-left: 12px; }

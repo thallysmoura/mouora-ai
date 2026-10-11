@@ -1,0 +1,14 @@
+node_modules
+.next
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+*.log
+.claude
+Dockerfile
+docker-compose*.yml
+README.md
+tsconfig.tsbuildinfo
+public/media/**/*.mp4.part

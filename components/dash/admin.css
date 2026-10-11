@@ -1,0 +1,77 @@
+/* Administração: controle de acesso e log de acesso */
+.ad { display: grid; gap: 20px; max-width: 1400px; }
+.ad-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; }
+.ad-stat { padding: 18px 22px; border-radius: 18px; background: rgba(255, 253, 252, 0.92); border: 1px solid #f0e6e1; box-shadow: 0 6px 24px rgba(120, 60, 30, 0.05); }
+.ad-stat span { display: block; font-size: 13.5px; color: #8b8480; }
+.ad-stat b { display: block; margin-top: 4px; font-family: var(--mx-font-display, "Manrope Variable", sans-serif); font-size: 30px; font-weight: 800; letter-spacing: -0.02em; color: #1d1411; }
+.ad-stat b.warn { color: #c4321a; }
+.ad-card { padding: 22px 24px; }
+.ad-filters { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+.ad-search { flex: 1 1 260px; display: flex; align-items: center; gap: 10px; height: 44px; padding: 0 14px; border: 1.5px solid #e8dfda; border-radius: 12px; background: #fff; color: #8b8480; }
+.ad-search:focus-within { border-color: #ef481f; box-shadow: 0 0 0 3px rgba(239, 72, 31, 0.12); }
+.ad-search input { flex: 1; min-width: 0; height: 100%; border: 0; outline: 0; background: transparent; font: inherit; font-size: 14.5px; color: #1d1411; }
+.ad-filters select { height: 44px; padding: 0 12px; border: 1.5px solid #e8dfda; border-radius: 12px; background: #fff; font: inherit; font-size: 14px; color: #1d1411; }
+.ad-btn { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 18px; border: 0; border-radius: 11px; background: #ef481f; color: #fff; font: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer; text-decoration: none; transition: background .15s; white-space: nowrap; }
+.ad-btn:hover:not(:disabled) { background: #d93d16; }
+.ad-btn:disabled { opacity: .55; cursor: default; }
+.ad-btn.ghost { background: #fff; color: #3a2a24; border: 1.5px solid #e8dfda; }
+.ad-btn.ghost:hover:not(:disabled) { background: #faf6f3; }
+.ad-btn.danger { background: #fff; color: #c4321a; border: 1.5px solid #f3c9c0; }
+.ad-btn.danger:hover:not(:disabled) { background: #fff1ee; }
+.ad-btn.ok { background: #fff; color: #12803f; border: 1.5px solid #bfe6cd; }
+.ad-btn.ok:hover:not(:disabled) { background: #effaf3; }
+.ad-link { font-size: 13.5px; font-weight: 600; color: #ef481f; text-decoration: underline; text-underline-offset: 3px; }
+.ad-note { margin: 0 0 12px; font-size: 14px; font-weight: 500; }
+.ad-note.ok { color: #12803f; } .ad-note.bad { color: #c4321a; }
+.ad-tablewrap { overflow-x: auto; margin: 0 -8px; padding: 0 8px; }
+.ad-table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 760px; }
+.ad-table th { padding: 10px 12px; text-align: left; font-size: 12px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: #8b8480; border-bottom: 1px solid #f0e6e1; white-space: nowrap; }
+.ad-table td { padding: 13px 12px; border-bottom: 1px solid #f6efeb; vertical-align: middle; color: #2a1b16; }
+.ad-table th.r, .ad-table td.r { text-align: right; }
+.ad-table tr.off td { opacity: .6; }
+.ad-table tr.click { cursor: pointer; }
+.ad-table tr.click:hover td, .ad-table tr.sel td { background: #fdf6f2; }
+.ad-table .nowrap { white-space: nowrap; }
+.ad-table .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 13px; }
+.ad-empty { padding: 36px 12px !important; text-align: center; color: #8b8480 !important; }
+.ad-user { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.ad-user img, .ad-ini { flex: none; width: 38px; height: 38px; border-radius: 50%; object-fit: cover; }
+.ad-ini { display: grid; place-items: center; background: linear-gradient(135deg, #ff7a3d, #ef481f); color: #fff; font-size: 13px; font-weight: 700; }
+.ad-user div { min-width: 0; display: grid; }
+.ad-user strong { font-size: 14.5px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ad-user strong em { font-style: normal; font-weight: 500; color: #8b8480; }
+.ad-user span { font-size: 12.5px; color: #8b8480; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ad-badge { display: inline-flex; align-items: center; gap: 5px; height: 26px; padding: 0 11px; border-radius: 999px; background: #f3efec; color: #5b4f49; font-size: 12.5px; font-weight: 600; white-space: nowrap; }
+.ad-badge.admin { background: #fdeee8; color: #c93a12; }
+.ad-badge.active, .ad-badge.ev-login, .ad-badge.ev-verify, .ad-badge.ev-register { background: #e6f6ec; color: #12803f; }
+.ad-badge.suspended, .ad-badge.ev-login_failed { background: #fde9e6; color: #c4321a; }
+.ad-badge.ev-reset { background: #fff3dc; color: #9a5b00; }
+.ad-actions { display: inline-flex; gap: 8px; }
+.ad-lock { font-size: 12.5px; color: #8b8480; }
+.ad-pager { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 16px; font-size: 13.5px; color: #8b8480; }
+.ad-pager div { display: flex; gap: 8px; }
+.ad-privacy { margin: 14px 0 0; font-size: 12.5px; color: #a0968f; }
+.ad-dev { display: block; font-size: 14px; font-weight: 600; }
+.ad-sub { display: block; font-size: 12.5px; color: #8b8480; }
+.ad-mapcard { position: relative; padding: 10px; overflow: hidden; }
+.ad-map { height: 400px; border-radius: 16px; overflow: hidden; background: #e8eef2; z-index: 0; }
+.ad-map-empty { position: absolute; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 400; margin: 0; padding: 10px 16px; max-width: 90%; border-radius: 12px; background: rgba(255, 255, 255, 0.95); font-size: 13px; color: #5b4f49; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12); text-align: center; }
+.ad-pin span { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: #ef481f; color: #fff; border: 3px solid #fff; font: 700 12px/1 var(--mx-font-body, sans-serif); box-shadow: 0 4px 12px rgba(239, 72, 31, 0.45), 0 0 0 6px rgba(239, 72, 31, 0.18); }
+.leaflet-popup-content { font-family: var(--mx-font-body, sans-serif); font-size: 13px; line-height: 1.5; }
+@media (max-width: 720px) {
+  .ad-card { padding: 16px 14px; }
+  .ad-map { height: 300px; }
+  .ad-filters select, .ad-filters .ad-btn { flex: 1 1 140px; }
+}
+
+/* o reset global do site (img { max-width:100% }) quebra os tiles do Leaflet: neutraliza dentro do mapa */
+.ad-map { position: relative; }
+.ad-map .leaflet-container, .ad-map.leaflet-container { font: inherit; background: #e8eef2; }
+.ad-map img, .ad-map .leaflet-tile, .ad-map .leaflet-marker-icon, .ad-map .leaflet-marker-shadow { max-width: none !important; max-height: none !important; width: auto; height: auto; }
+.ad-map .leaflet-tile { width: 256px; height: 256px; }
+.ad-map .leaflet-control-container a { text-decoration: none; }
+.ad-map .leaflet-popup-content-wrapper { border-radius: 12px; }
+.ad-badge.pending { background: #fff3dc; color: #9a5b00; }
+.ad-stat.alert { border-color: #f6d9a6; background: #fffaf0; }
+
+@media (max-width: 900px) { .ad-search input, .ad-filters select { font-size: 16px; } }

@@ -1,3 +1,5 @@
+import SiteFooter from "./SiteFooter";
+import LangSwitch from "./LangSwitch";
 import "./how.css";
 import LoadingLink from "./LoadingLink";
 import PageBgVideo from "./PageBgVideo";
@@ -65,7 +67,10 @@ export default function HowItWorks({ lang }: { lang: Lang }) {
           <a href={about}>{t.nav[1]}</a>
           <a href={contact}>{t.nav[2]}</a>
         </nav>
-        <LoadingLink className="hw-login" href={`/login?lang=${lang}`}>{t.login}</LoadingLink>
+        <div className="hw-tools">
+          <LangSwitch lang={lang} slug="/como-funciona" />
+          <LoadingLink className="hw-login" href={`/login?lang=${lang}`}>{t.login}</LoadingLink>
+        </div>
       </header>
 
       <main className="hw-wrap">
@@ -114,14 +119,7 @@ export default function HowItWorks({ lang }: { lang: Lang }) {
         </LoadingLink>
       </section>
 
-      <footer className="hw-foot">
-        <a className="hw-logo" href={home} aria-label="MOUORA AI"><img src="/assets/brand/mouora-logo.webp" alt="MOUORA" /></a>
-        <nav aria-label="Rodapé">
-          <a href={t.privacy}>{t.foot[3]}</a>
-          <a href={t.terms}>{t.foot[4]}</a>
-        </nav>
-        <span>© 2026 MOUORA AI. {t.rights}</span>
-      </footer>
+      <SiteFooter lang={lang} />
     </div>
   );
 }
